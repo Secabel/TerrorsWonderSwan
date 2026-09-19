@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.bak
+*.bak_*
+
+# ROMs y archivos generados (no se distribuyen)
+*.ws
+*.wsc
+src/*.bin
+node_modules/
+.env
+.env.local
