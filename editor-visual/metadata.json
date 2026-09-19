@@ -1,0 +1,6 @@
+{
+  "name": "Terrors WS Previewer",
+  "description": "Visualizador y editor de traducciones para Terrors (Bandai WonderSwan)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

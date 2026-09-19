@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.bak
+*.bak_*
+
+# ROMs y archivos generados (no se distribuyen)
+*.ws
+*.wsc
+*.asm
+cave_*.bin
+node_modules/
+.env
+.env.local

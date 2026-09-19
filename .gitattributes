@@ -1,0 +1,14 @@
+# Normaliza los finales de linea a LF en el repositorio, sin importar el
+# sistema operativo/editor que haya guardado el archivo (Windows suele
+# guardar CRLF). Evita que archivos sin cambios reales de contenido
+# aparezcan como "modified" solo por diferencias de \r\n vs \n.
+* text=auto eol=lf
+
+# Binarios: nunca tocar finales de linea.
+*.png binary
+*.ws binary
+*.wsc binary
+*.rom binary
+*.mss binary
+*.zip binary
+*.ico binary
