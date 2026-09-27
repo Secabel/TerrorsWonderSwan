@@ -288,7 +288,7 @@ CSV_INPUT = 'data/translation_es.csv'
 CAVE_ASM = 'src/cave_es.asm'
 CAVE_BIN = 'src/cave_es.bin'
 
-CHARS = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ.,?!-1234567890@:'
+CHARS = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ.,?!-1234567890@:Ñ'
 
 def word_wrap(texto, max_cols):
     palabras = texto.upper().split()

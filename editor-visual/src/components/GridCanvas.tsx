@@ -69,9 +69,10 @@ export const GridCanvas: React.FC<GridCanvasProps> = ({ layout }) => {
         // Font is 5x5, embedded in an 8x8 tile with ~1.5px padding.
         // Let's offset by 1 or 2 logical units (scale px) down and right
         const OFFSET_X = 1 * SCALE;
-        const OFFSET_Y = 1 * SCALE;
+        // Glifos de 6 filas (Ñ): la fila extra usa la fila 0 del tile 8x8
+        const OFFSET_Y = (fontDef.length > 5 ? 0 : 1) * SCALE;
 
-        for (let y = 0; y < 5; y++) {
+        for (let y = 0; y < fontDef.length; y++) {
           for (let x = 0; x < 5; x++) {
             if (fontDef[y][x] === 1) {
                 // Notice we do NOT apply any coordinate transformation or rotation here.

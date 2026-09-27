@@ -14,7 +14,7 @@ Fuente base: mcufont 5x5 (https://maurycyz.com/projects/mcufont/)
 """
 
 FUENTE_BIN = 'font/font_es.bin'
-CHARS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ.,?!-1234567890@:"
+CHARS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ.,?!-1234567890@:Ñ"
 
 # Todos los glifos de mcufont 5x5 ya incluidos
 GLIFOS_BASE = {
@@ -62,6 +62,7 @@ GLIFOS_BASE = {
     '0': [0b01110, 0b10001, 0b10101, 0b10001, 0b01110],
     '@': [0b00000, 0b00000, 0b00000, 0b00000, 0b00000],
     ':': [0b00000, 0b01000, 0b00000, 0b01000, 0b00000],
+    'Ñ': [0b01110, 0b00000, 0b11001, 0b10101, 0b10011, 0b10001],  # 6 filas: la 1a va en la fila 0 del tile
 }
 
 # Agregar o modificar glifos aqui (misma formato 5x5 bits):
@@ -72,10 +73,11 @@ GLIFOS_NUEVOS = {
 
 def make_8x8_from_5x5(rows5):
     grid = [[0]*8 for _ in range(8)]
+    base = 0 if len(rows5) == 6 else 1   # glifos de 6 filas (Ñ) empiezan en la fila 0
     for r, row in enumerate(rows5):
         for c in range(5):
             bit = (row >> (4-c)) & 1
-            grid[r+1][c+1] = bit
+            grid[r+base][c+1] = bit
     return grid
 
 def rotar_90_horario(grid):
