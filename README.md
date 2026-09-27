@@ -13,10 +13,9 @@ Fan translation of *Terrors*, a Japanese horror visual novel for the Bandai Wond
 **English**
 
 <p>
-<img src="images/en_01_story_select.png" width="200" alt="English screenshot">
+<img src="images/en_01_continue_menu.png" width="200" alt="English screenshot">
 <img src="images/en_02_story_text.png" width="200" alt="English screenshot">
 <img src="images/en_03_story_text.png" width="200" alt="English screenshot">
-<img src="images/en_04_story_text.png" width="200" alt="English screenshot">
 </p>
 
 > **Version 1.0**
