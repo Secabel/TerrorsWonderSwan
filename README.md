@@ -35,8 +35,8 @@ Fan translation of *Terrors*, a Japanese horror visual novel for the Bandai Wond
 
    | Patch | Result | CRC32 | SHA-1 |
    |---|---|---|---|
-   | `Terrors_ES.bps` | Spanish, 8 MB | `B2F559E6` | `db6e39f3102164963a76fff088ce890f03850974` |
-   | `Terrors_EN.bps` | English, 8 MB | `95BD7F23` | `1fbddb9438876c6f7987f70272068d82730b15a3` |
+   | `Terrors_ES.bps` | Spanish, 8 MB | `275300DB` | `679d3c986cfdf23834a5f1f12ed3ca553d8f6827` |
+   | `Terrors_EN.bps` | English, 8 MB | `4254C02B` | `0124e2902aba6f85959418c8a89fa00151b950a2` |
 
 The patched ROM is 8 MB because it needs extra space for the translated text. It works in emulators such as Mesen and on real hardware with a flash cartridge that supports 8 MB ROMs.
 
