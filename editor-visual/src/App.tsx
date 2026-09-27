@@ -286,7 +286,7 @@ Formato de salida esperado:
       {/* Header */}
       <div className="h-12 bg-theme-panel border-b border-theme-border flex items-center justify-between px-6 shrink-0">
         <h1 className="text-[14px] tracking-[2px] text-theme-accent font-bold m-0 uppercase flex items-center gap-2">
-          TERRORS_WS_PREVIEWER_V1.1.20
+          TERRORS_WS_PREVIEWER_V1.1.22
         </h1>
         <div className="flex gap-3">
             <button 
