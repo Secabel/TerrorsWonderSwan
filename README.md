@@ -18,7 +18,7 @@ Fan translation of *Terrors*, a Japanese horror visual novel for the Bandai Wond
 <img src="images/en_03_story_text.png" width="200" alt="English screenshot">
 </p>
 
-> **Version 1.0**
+> **Version 1.1**
 > This repository does **not** contain the game. You need your own copy of the original ROM.
 
 ## Playing the translation (patch users)
@@ -35,8 +35,8 @@ Fan translation of *Terrors*, a Japanese horror visual novel for the Bandai Wond
 
    | Patch | Result | CRC32 | SHA-1 |
    |---|---|---|---|
-   | `Terrors_ES.bps` | Spanish, 8 MB | `275300DB` | `679d3c986cfdf23834a5f1f12ed3ca553d8f6827` |
-   | `Terrors_EN.bps` | English, 8 MB | `4254C02B` | `0124e2902aba6f85959418c8a89fa00151b950a2` |
+   | `Terrors_ES.bps` | Spanish, 8 MB | `3AF8A9B6` | `f87e49a09846ebc4f45614dffb8db879a9af3e0c` |
+   | `Terrors_EN.bps` | English, 8 MB | `E5DB297C` | `2e4deb517f63e821e0c64b861ca1957641afe0ce` |
 
 The patched ROM is 8 MB because it needs extra space for the translated text. It works in emulators such as Mesen and on real hardware with a flash cartridge that supports 8 MB ROMs.
 
@@ -93,6 +93,15 @@ Run it from the repository root, with the original ROM there (see the checksums 
 - **Options (pause) menu not translated:** the in-game options/pause menu is still in Japanese.
 - **Untranslated screen after the pause menu:** after opening the options (pause) menu and returning to the game, the current screen is shown untranslated; the translation resumes from the next page.
 - With 47 endings and many routes that only change dialogue, not every route has been re-tested after every change. Some typos or inconsistencies may remain.
+
+## Version history
+
+### 1.1
+- Corrected the English script on a number of screens where the text had been cut off partway through compared to the complete Spanish version (missing final sentences, and in a few cases a missing character name or story detail).
+- Fixed a couple of small English/Spanish consistency issues in one branch of story H1.
+
+### 1.0
+- Initial public release.
 
 ## Credits
 
