@@ -14,7 +14,7 @@ ORG 0x4F802
 
 BANCO_FUENTE    equ 0x60
 BANCO_TABLAS    equ 0x40
-N_PANT          equ 4058
+N_PANT          equ 4247
 FLAG_COMPRIMIDO equ 0x8000
 DELTA_TILESET   equ 0x0100   ; incremento tileset_addr entre letras consecutivas
 
@@ -22,11 +22,11 @@ DELTA_TILESET   equ 0x0100   ; incremento tileset_addr entre letras consecutivas
 ; el Python). BANCO_TABLA_OPT es un banco NUEVO, separado de BANCO_TABLAS
 ; (pant_tabla no se toco). Todos los offsets son bytes dentro de ese banco.
 BANCO_TABLA_OPT   equ 0x41
-N_TABLA_A         equ 3
+N_TABLA_A         equ 16
 TABLA_A_INDEX_OFF equ 0x0000
-TABLA_A_ROWS_OFF  equ 0x0012
-N_TABLA_B         equ 7495
-TABLA_B_OFF       equ 0x001E
+TABLA_A_ROWS_OFF  equ 0x0060
+N_TABLA_B         equ 7844
+TABLA_B_OFF       equ 0x008E
 
 ; NOTA (v19c): el mecanismo aislado del menu (MENU_PREV/MENU_CF, WRAM
 ; 0x0DBC/0x0DBD) de v19/v19b se ELIMINO -- dependia de que HOOK1 escribiera

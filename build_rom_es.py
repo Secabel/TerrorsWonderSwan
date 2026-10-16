@@ -2023,10 +2023,13 @@ for _banco_libro in (0x34, 0x74):
 #for _base_libro in (0x2CF000, 0x6CF000):
 #    rom[_base_libro:_base_libro+0x1000] = b'\x00' * 0x1000
 
-rom[0x3E0180:0x3E0200] = b'\x00' * 0x80
-rom[0x7E0180:0x7E0200] = b'\x00' * 0x80
-rom[0x3E0B00:0x3E0B80] = b'\x00' * 0x80
-rom[0x7E0B00:0x7E0B80] = b'\x00' * 0x80
+# Zereo del punto japones (0x3E0180) y de la linea japonesa (0x3E0B00), base y espejo 8MB:
+# DESACTIVADO en v23 -- ya no hace falta, el fix de kanji residual (STUBCAP/STUBRES, arriba)
+# deshace ese blit tardio. Probado en Mesen (oct 2026). Se conserva comentado por si hay que revertir.
+#rom[0x3E0180:0x3E0200] = b'\x00' * 0x80   # Punto japones (ROM base)
+#rom[0x7E0180:0x7E0200] = b'\x00' * 0x80   # Punto japones (ROM espejo 8MB)
+#rom[0x3E0B00:0x3E0B80] = b'\x00' * 0x80   # Linea japonesa (ROM base)
+#rom[0x7E0B00:0x7E0B80] = b'\x00' * 0x80   # Linea japonesa (ROM espejo 8MB)
 
 # === FIX PUNTUAL: entrada de tabla de bancos en 0xFF370 (julio 2026) ===
 #
@@ -2296,6 +2299,15 @@ for base_tabla_banco5 in [0x3FF888, 0x7FF888]:
 # problema de raiz.
 # ------------------------------------------------------------------------
 
+# v23 (octubre 2026) -- FIX KANJI RESIDUAL: STUBCAP/STUBRES ahora guardan/restauran
+# las 3 words del tile NO SOLO si es:[0x09D6]==0 (menu), sino TAMBIEN si es:[0x0CF0]==1
+# (el cave ya dibujo esta pantalla). Asi el ultimo blit nativo (XOR del kanji sobre el
+# texto latino, hecho DESPUES del cave) queda deshecho -- ese era el "kanji residual" en
+# preguntas y en algunas pantallas de texto. Los flags de salida se conservan (el jne de
+# 0x4103 depende de ZF=1 sii 09D6==0). Los stubs nuevos no cabian en su sitio original y
+# se reubicaron a 0xFE10 (CAP, 51 bytes) y 0xFE50 (RES, 52 bytes), dentro del relleno de
+# STUB1. Con este fix YA NO hace falta el zereo del punto/linea japoneses (ver mas abajo).
+# Probado en Mesen (preguntas, texto normal, cursor, menu de pausa) por Talion.
 HOOK1_SITE_LOCAL    = 0x3F84
 HOOK1_RETURN_LOCAL  = 0x3F89
 HOOKCAP_SITE_LOCAL   = 0x40FD
@@ -2304,17 +2316,17 @@ HOOKRES_SITE_LOCAL   = 0x413E
 HOOKRES_RETURN_LOCAL = 0x4145
 STUB_BASE_LOCAL     = 0xFE03
 STUB1_ADDR_LOCAL    = 0xFE03
-STUBCAP_ADDR_LOCAL  = 0xFE65
-STUBRES_ADDR_LOCAL  = 0xFE93
+STUBCAP_ADDR_LOCAL  = 0xFE10
+STUBRES_ADDR_LOCAL  = 0xFE50
 STUB_END_LOCAL      = 0xFEC0
 DIR_CHEQUEO_HISTORIA = 0x09D6  # 0 en el menu, valor de historia durante narrativa
 
 HOOK1_PATCH_BYTES   = bytes.fromhex('e97cbe9090')    # 5 bytes
-HOOKCAP_PATCH_BYTES = bytes.fromhex('e965bd909090')  # 6 bytes
-HOOKRES_PATCH_BYTES = bytes.fromhex('e952bd90909090')  # 7 bytes
+HOOKCAP_PATCH_BYTES = bytes.fromhex('e910bd909090')  # 6 bytes
+HOOKRES_PATCH_BYTES = bytes.fromhex('e90fbd90909090')  # 7 bytes
 STUB1_BYTES   = bytes.fromhex('268b3e920ce97e419090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090909090')
-STUBCAP_BYTES = bytes.fromhex('501e31c08ed8a1d60909c07514268b44e0a3b60d268b44f0a3b80d268b04a3ba0d1f58e978429090909090909090')
-STUBRES_BYTES = bytes.fromhex('59501e31c08ed8a1d60909c07514a1b60d268944e0a1b80d268944f0a1ba0d2689041f58268306840c02e98542')
+STUBCAP_BYTES = bytes.fromhex('501e31c08ed8a1d60909c07407833ef00c017514268b44e0a3b60d268b44f0a3b80d268b04a3ba0d1f5826833ed60900e9c042')
+STUBRES_BYTES = bytes.fromhex('59501e31c08ed8a1d60909c07407833ef00c017514a1b60d268944e0a1b80d268944f0a1ba0d2689041f58268306840c02e9c142')
 # STUBCAP/STUBRES: push ax/ds; ds=0; mov ax,[0x9D6]; or ax,ax; jne skip ->
 # capturar/restaurar (misma logica que la base "antigravity", incondicional,
 # solo que ahora envuelta en este chequeo) -> skip: pop ds/ax; jmp de vuelta.
